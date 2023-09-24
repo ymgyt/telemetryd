@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = ["telemetryd"]
+
+[workspace.package]
+edition = "2021"
+
+[workspace.dependencies]
+clap = { version = "4.4.4" }
+tokio = { version = "1.32.0", default-features = false }
+tracing = { version = "0.1.37" }
+tracing-subscriber = { version = "0.3.17" }
