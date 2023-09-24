@@ -9,7 +9,7 @@
   outputs = { self, nixpkgs, flake-utils }:
     {
       overlay = final: prev: {
-        telemetryd = prev.rustPlatform.buildRustPackage {
+        telemetryd = final.rustPlatform.buildRustPackage {
           pname = "telemetryd";
           version = "0.1.0";
           src = ./.;
@@ -19,8 +19,7 @@
       };
     } // flake-utils.lib.eachDefaultSystem (system:
       let
-        overlays = [ self.overlay ];
-        pkgs = import nixpkgs { inherit system overlays; };
+        pkgs = import nixpkgs { inherit system; overlays = [ self.overlay ]; };
       in {
         defaultPackage = self.packages."${system}".telemetryd;
         packages.default = self.packages."${system}".telemetryd;
