@@ -6,6 +6,7 @@ use tracing::{error, info};
 use crate::{config, grpc};
 
 #[derive(Parser)]
+#[clap(version)]
 pub struct Telemetryd {
     /// Bind ip address
     #[clap(long, default_value = "0.0.0.0")]
